@@ -38,6 +38,12 @@ I am Anthony (AJ) La Barca, an academic researcher with a passion for advancing 
 - Developing detector-tracker frameworks for the mWidar radar system
 - Time series classification methods for satellite fault detection
 
+## Peer-Edited Research Papers
+
+- **La Barca, A. J., Jourabchi, B., Ahmed, N. R., and Da Silva, F.**: “Robust Dynamic Object Detection Algorithms for Continuous-Capture mWidar Imaging,” AIAA SciTech Forum, American Institute of Aeronautics and Astronautics, Orlando, FL, Jan. 2026. (Accepted)
+- **La Barca, A. J., Waltz, J., Ahmed, N. R., Kim, A., Hussein, I., Dean, M., and Simon, M.**: “Time Series Classification for Satellite Fault Detection,” AIAA SciTech Forum, American Institute of Aeronautics and Astronautics, Orlando, FL, Jan. 2026. (Accepted)
+- **Quillen, A. C., La Barca, A. J., and Chen, Y. Y.**: “Non-principal axis rotation in binary asteroid systems and how it weakens the BYORP effect,” Icarus, vol. 368, 2021, p. 114826. [doi:10.1016/j.icarus.2021.114826](https://doi.org/10.1016/j.icarus.2021.114826)
+
 ### Previous Positions
 
 **Teaching Assistant** - University of Colorado, Boulder (2024 - 2025)
@@ -62,6 +68,13 @@ I am Anthony (AJ) La Barca, an academic researcher with a passion for advancing 
 - **Data Association**: Techniques for associating sensor data with known objects
 - **Time Series Classification**: Machine learning for fault detection in aerospace systems
 
+## Specialized Skills
+
+- **Programming Languages**: Python (ML, Data Analysis), MATLAB, Julia, LaTeX, C/C++, Git, Unix-like systems, Java, LISP
+- **Observational Astronomy**: MaxIM DL, SAO Image, CCDStack, TCS-Go Galil, TheSky, Remote Observation
+- **Engineering**: Vectorworks CAD, 3D Printing (MakerBot, XYZ Printing)
+- **Geological**: Spectrophotometry, Mastersizer 3000 Particle Size Analysis, XRF Analysis
+
 ## Awards and Honors
 
 - Nassau County Legislature, Citizen of the Month (December 2023)
@@ -75,22 +88,9 @@ I am Anthony (AJ) La Barca, an academic researcher with a passion for advancing 
 - **Collegiate Activities**: Society of Physics Students, Rochester Ultimate Frisbee Team, Astronomy Club, Rock Climbing Club
 - **Musical Instruments**: Cello, Piano, Saxophone, Organ, Guitar
 
-## Peer-Edited Research Papers
-
-- **La Barca, A. J., Jourabchi, B., Ahmed, N. R., and Da Silva, F.**: “Robust Dynamic Object Detection Algorithms for Continuous-Capture mWidar Imaging,” AIAA SciTech Forum, American Institute of Aeronautics and Astronautics, Orlando, FL, Jan. 2026. (Accepted)
-- **La Barca, A. J., Waltz, J., Ahmed, N. R., Kim, A., Hussein, I., Dean, M., and Simon, M.**: “Time Series Classification for Satellite Fault Detection,” AIAA SciTech Forum, American Institute of Aeronautics and Astronautics, Orlando, FL, Jan. 2026. (Accepted)
-- **Quillen, A. C., La Barca, A. J., and Chen, Y. Y.**: “Non-principal axis rotation in binary asteroid systems and how it weakens the BYORP effect,” Icarus, vol. 368, 2021, p. 114826. [doi:10.1016/j.icarus.2021.114826](https://doi.org/10.1016/j.icarus.2021.114826)
-
 ## Relevant Term Papers
 
 - **LaBarca, A.**: Adoption of the Transformer Architecture for Supernova Detection in the DESI Survey (2023)
 - **LaBarca, A.**: Effectiveness of Transfer Learning for Medical Computer Vision (2023)
 - **LaBarca, A., Lovan, T.**: HII and Massive Star Formation Regions (2023)
 - **LaBarca, A.**: Presence of Dark Matter Halos in Cluster and Field Galaxies (2022)
-
-## Specialized Skills
-
-- **Programming Languages**: Python (ML, Data Analysis), MATLAB, Julia, LaTeX, C/C++, Git, Unix-like systems, Java, LISP
-- **Observational Astronomy**: MaxIM DL, SAO Image, CCDStack, TCS-Go Galil, TheSky, Remote Observation
-- **Engineering**: Vectorworks CAD, 3D Printing (MakerBot, XYZ Printing)
-- **Geological**: Spectrophotometry, Mastersizer 3000 Particle Size Analysis, XRF Analysis

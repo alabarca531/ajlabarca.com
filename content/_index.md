@@ -16,13 +16,13 @@ I am Anthony (AJ) La Barca, a PhD student in Aerospace Engineering at the Univer
 
 ## Contact Information
 
-- **Email**: [aj.labarca@example.com](mailto:aj.labarca@example.com)
+- **Email**: [aj.labarca@colorado.edu](mailto:aj.labarca@colorado.edu)
 - **ORCID**: [0000-0002-1234-5678](https://orcid.org/0000-0002-1234-5678)
 
 ## Relevant Links
 
 - **Professional Website**: [ajlabarca.com](https://ajlabarca.com)
-- **Personal Website**: [personal.ajlabarca.com](https://personal.ajlabarca.com)
+<!-- - **Personal Website**: [personal.ajlabarca.com](https://personal.ajlabarca.com) -->
 - **COHRINT Website**: [COHRINT](https://cohrint.info/)
 
 For detailed information, visit my [Curriculum Vitae](./cv) page.
