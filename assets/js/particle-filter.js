@@ -1,15 +1,17 @@
 // Hero background: a bootstrap particle filter tracking a target from noisy,
-// cluttered measurements with missed detections. Purely decorative.
+// cluttered measurements with missed detections. The target wanders on its own,
+// or chases the pointer while it moves over the hero.
 
 const canvas = document.querySelector(".pf-canvas");
 const button = document.querySelector(".pf-caption");
+const hero = document.querySelector(".hero");
 
 if (canvas) {
   const ctx = canvas.getContext("2d");
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
   const N = 350;          // particles
   const SIGMA_Z = 22;     // measurement noise (px)
-  const SIGMA_A = 140;    // process noise on acceleration (px/s^2)
+  const SIGMA_A = 220;    // process noise on acceleration (px/s^2)
   const P_DETECT = 0.85;  // probability the target is detected in a scan
   const CLUTTER = 1.2;    // mean false alarms per scan
   const SCAN_DT = 0.12;   // seconds between measurement scans
@@ -19,6 +21,8 @@ if (canvas) {
   let running = false, visible = true, paused = false;
   let colors = {};
   const truth = { x: 0, y: 0, vx: 0, vy: 0 };
+  const pointer = { x: 0, y: 0, last: -Infinity };  // last = time of last move (s, filter clock)
+  const K = 30, C = 2 * Math.sqrt(30) * 0.9;        // spring pulling the target toward its goal
   const px = new Float32Array(N), py = new Float32Array(N);
   const pvx = new Float32Array(N), pvy = new Float32Array(N);
   const w = new Float32Array(N).fill(1 / N);
@@ -41,10 +45,10 @@ if (canvas) {
     };
   }
 
-  // Smooth, wandering path through the right two-thirds of the hero.
+  // Smooth, wandering path across the hero.
   function truthAt(time) {
-    const cx = W * (W > 760 ? 0.6 : 0.5), cy = H * 0.52;
-    const ax = W * (W > 760 ? 0.32 : 0.4), ay = H * 0.34;
+    const cx = W * 0.5, cy = H * 0.5;
+    const ax = W * 0.42, ay = H * 0.36;
     return {
       x: cx + ax * Math.sin(0.23 * time) * Math.cos(0.071 * time + 1),
       y: cy + ay * Math.sin(0.37 * time + 0.6),
@@ -62,7 +66,7 @@ if (canvas) {
 
   function init() {
     const p = truthAt(t);
-    truth.x = p.x; truth.y = p.y;
+    truth.x = p.x; truth.y = p.y; truth.vx = truth.vy = 0;
     for (let i = 0; i < N; i++) {
       px[i] = p.x + randn() * W * 0.15; py[i] = p.y + randn() * H * 0.2;  // broad prior around the start
       pvx[i] = randn() * 60; pvy[i] = randn() * 60;
@@ -136,9 +140,10 @@ if (canvas) {
 
   function step(dt) {
     t += dt;
-    const p = truthAt(t);
-    truth.vx = (p.x - truth.x) / dt; truth.vy = (p.y - truth.y) / dt;
-    truth.x = p.x; truth.y = p.y;
+    const g = t - pointer.last < 2.5 ? pointer : truthAt(t);
+    truth.vx += (K * (g.x - truth.x) - C * truth.vx) * dt;
+    truth.vy += (K * (g.y - truth.y) - C * truth.vy) * dt;
+    truth.x += truth.vx * dt; truth.y += truth.vy * dt;
     predict(dt);
     sinceScan += dt;
     if (sinceScan >= SCAN_DT) { sinceScan = 0; scan(); scans.forEach(s => s.age++); }
@@ -204,10 +209,9 @@ if (canvas) {
 
   function frame(now) {
     if (!running) return;
-    const dt = Math.min((now - last) / 1000, 1 / 20);
+    const dt = Math.min((now - last) / 1000, 1 / 20);  // rAF time can trail performance.now()
     last = now;
-    step(dt);
-    draw();
+    if (dt > 0) { step(dt); draw(); }
     requestAnimationFrame(frame);
   }
 
@@ -236,8 +240,18 @@ if (canvas) {
   reduceMotion.addEventListener("change", () => (reduceMotion.matches ? (stop(), staticFrame()) : start()));
   window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => { readColors(); if (!running) draw(); });
 
+  if (hero) {
+    hero.addEventListener("pointermove", (e) => {
+      const r = canvas.getBoundingClientRect();
+      pointer.x = e.clientX - r.left; pointer.y = e.clientY - r.top; pointer.last = t;
+    });
+    hero.addEventListener("pointerleave", () => { pointer.last = -Infinity; });
+  }
+
   if (button) {
     button.hidden = false;
+    if (!reduceMotion.matches) button.querySelector(".pf-label").textContent =
+      `Live: a particle filter tracking a target through noisy measurements. ${window.matchMedia("(hover: hover)").matches ? "Move your mouse" : "Drag your finger"} to steer it.`;
     if (reduceMotion.matches) button.querySelector(".pf-label").textContent = "A particle filter tracking a target through noisy measurements";
     button.addEventListener("click", () => {
       paused = !paused;
