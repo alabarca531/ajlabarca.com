@@ -9,5 +9,6 @@ and decision-making tools that help autonomous systems, and the people who super
 out what is actually happening from noisy, incomplete data.
 
 These days that means tracking targets in high-rate microwave imagery and teaching satellites to
-diagnose their own faults. Before Boulder, I studied physics and astronomy at the
+diagnose their own faults. I'm also a research intern with the Machine Learning & Perception
+Group at **Draper**, working on resilient AI systems. Before Boulder, I studied physics and astronomy at the
 **University of Rochester**, where I worked on the rotational dynamics of binary asteroids.

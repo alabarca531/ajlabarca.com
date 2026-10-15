@@ -17,9 +17,15 @@ education:
     when: 2023
     details:
       - "Minors: Computer Science, Mathematics, Music"
+      - "Senior thesis: supernova spectra classification with Spectral-ViT, a transformer model I developed"
       - Sigma Pi Sigma Physics Honor Society · Dean's List (five semesters)
 
 research:
+  - title: Research Intern, Machine Learning & Perception Group
+    org: Draper
+    when: 2026 – present
+    details:
+      - Research on resilient AI systems; full-time in Summer 2026, continuing part-time in the fall
   - title: Graduate Research Assistant
     org: COHRINT Lab, University of Colorado Boulder
     when: 2025 – present

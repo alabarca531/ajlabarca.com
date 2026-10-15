@@ -5,7 +5,8 @@
 #   authors:  list, exactly as they should print. Your name is bolded automatically.
 #   status:   optional, e.g. "Accepted", "In review", "In press". Remove once published.
 #   selected: true to feature on the home page
-#   project:  optional id from data/projects.yaml; lists the paper under that project on /research
+#   project:  optional; the file name of a project in content/research/ (e.g. mwidar for mwidar.md).
+#             The paper is then listed on that project's page.
 #   links:    any of doi (ID only), url, pdf, arxiv (ID only), code, slides
 #   bibtex:   optional, shown in an expandable "BibTeX" block
 
@@ -60,6 +61,7 @@
   title: Non-principal axis rotation in binary asteroid systems and how it weakens the BYORP effect
   authors: [A. C. Quillen, A. J. La Barca, Y. Y. Chen]
   venue: Icarus
+  project: binary-asteroids
   volume: "368"
   pages: "114826"
   year: 2021

@@ -1,0 +1,19 @@
+{{ define "main" }}
+<div class="wrap page">
+  {{ partial "page-header.html" . }}
+  {{ with .Content }}<div class="panel prose interests">{{ . }}</div>{{ end }}
+  {{ $pages := .RegularPages.ByWeight }}
+  {{ with where $pages "Params.status" "current" }}
+  <section class="section">
+    <h2 class="section-label">Current work</h2>
+    <div class="cards">{{ range . }}{{ partial "project-card.html" . }}{{ end }}</div>
+  </section>
+  {{ end }}
+  {{ with where $pages "Params.status" "!=" "current" }}
+  <section class="section">
+    <h2 class="section-label">Past work</h2>
+    <div class="cards">{{ range . }}{{ partial "project-card.html" . }}{{ end }}</div>
+  </section>
+  {{ end }}
+</div>
+{{ end }}

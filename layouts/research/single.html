@@ -1,0 +1,29 @@
+{{ define "main" }}
+<div class="wrap page">
+  <header class="page-header">
+    <p class="eyebrow"><a href="{{ "research/" | relURL }}">Research</a> · {{ if eq .Params.status "current" }}Current{{ else }}Past{{ end }}</p>
+    <h1>{{ .Title }}</h1>
+    <ul class="meta-pills">
+      {{ with .Params.when }}<li>{{ . }}</li>{{ end }}
+      {{ with .Params.partner }}<li>In collaboration with {{ . }}</li>{{ end }}
+    </ul>
+    {{ with .Params.tags }}<ul class="tags">{{ range . }}<li>{{ . }}</li>{{ end }}</ul>{{ end }}
+  </header>
+  <article class="panel prose project-body">{{ .Content }}</article>
+
+  {{ with where hugo.Data.publications "project" .File.ContentBaseName }}
+  <section class="section">
+    <h2 class="section-label">Related publications</h2>
+    <ol class="pubs">{{ range . }}{{ partial "pub.html" . }}{{ end }}</ol>
+  </section>
+  {{ end }}
+
+  {{ $others := where (where .CurrentSection.RegularPages.ByWeight "Permalink" "!=" .Permalink) "Params.status" .Params.status }}
+  {{ with $others }}
+  <section class="section">
+    <h2 class="section-label">More {{ if eq $.Params.status "current" }}current{{ else }}past{{ end }} work</h2>
+    <div class="cards">{{ range . }}{{ partial "project-card.html" . }}{{ end }}</div>
+  </section>
+  {{ end }}
+</div>
+{{ end }}

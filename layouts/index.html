@@ -25,7 +25,7 @@
 
 <section class="wrap section about">
   <h2 class="section-label">About</h2>
-  <div class="prose">{{ .Content }}</div>
+  <div class="panel prose">{{ .Content }}</div>
 </section>
 
 <section class="wrap section">
@@ -34,20 +34,14 @@
     <a class="more" href="{{ "research/" | relURL }}">All research {{ partial "icon.html" "arrow" }}</a>
   </div>
   <div class="cards">
-    {{ range hugo.Data.projects }}
-    <a class="card" href="{{ "research/" | relURL }}#{{ .id }}">
-      <h3>{{ .title }}</h3>
-      <p>{{ .summary }}</p>
-      <ul class="tags">{{ range .tags }}<li>{{ . }}</li>{{ end }}</ul>
-    </a>
-    {{ end }}
+    {{ with site.GetPage "/research" }}{{ range where .RegularPages.ByWeight "Params.status" "current" }}{{ partial "project-card.html" . }}{{ end }}{{ end }}
   </div>
 </section>
 
 <section class="wrap section two-col">
   <div>
     <h2 class="section-label">News</h2>
-    <ul class="news">
+    <ul class="panel news">
       {{ range first 5 hugo.Data.news }}
       <li><span class="news-date">{{ .when }}</span><span>{{ .text | markdownify }}</span></li>
       {{ end }}
@@ -58,7 +52,7 @@
       <h2 class="section-label">Selected publications</h2>
       <a class="more" href="{{ "publications/" | relURL }}">All {{ partial "icon.html" "arrow" }}</a>
     </div>
-    <ol class="pubs pubs-compact">
+    <ol class="panel pubs pubs-compact">
       {{ range where hugo.Data.publications "selected" true }}{{ partial "pub.html" . }}{{ end }}
     </ol>
   </div>

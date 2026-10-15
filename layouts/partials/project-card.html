@@ -1,0 +1,6 @@
+<a class="card" href="{{ .RelPermalink }}">
+  <p class="card-meta">{{ .Params.when }}{{ with .Params.partner }} · {{ . }}{{ end }}</p>
+  <h3>{{ .Title }}</h3>
+  <p>{{ .Params.summary }}</p>
+  {{ with .Params.tags }}<ul class="tags">{{ range . }}<li>{{ . }}</li>{{ end }}</ul>{{ end }}
+</a>

@@ -1,6 +1,5 @@
 ---
 title: "Research"
-layout: research
 eyebrow: "Research"
 lede: "My work sits where estimation theory meets real, messy sensor data. The question running through it is how an autonomous system can stay confident about the state of the world when its measurements are noisy, ambiguous, or missing."
 description: "Research on Bayesian estimation, data association, and time series classification for autonomous aerospace systems."
