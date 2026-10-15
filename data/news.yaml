@@ -1,0 +1,11 @@
+# Newest first. The home page shows the first five. Markdown is allowed in `text`.
+- when: May 2026
+  text: Received an **M.S. in Aerospace Engineering Sciences** (Autonomous Systems) from CU Boulder, on the way to the PhD.
+- when: Jan 2026
+  text: Presented two papers at **AIAA SciTech 2026** in Orlando, on mWidar object detection and satellite fault detection.
+- when: 2025
+  text: Joined the [COHRINT Lab](https://cohrint.info/) as a Research Assistant, advised by Prof. Nisar Ahmed.
+- when: Fall 2024
+  text: Started a PhD in Aerospace Engineering Sciences at the University of Colorado Boulder.
+- when: 2021
+  text: First paper published in *Icarus*, on non-principal axis rotation in binary asteroid systems.

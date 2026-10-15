@@ -1,0 +1,15 @@
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="wordmark" href="{{ "/" | relURL }}" aria-label="Home">
+      <span class="wordmark-name">AJ La Barca</span>
+    </a>
+    <nav aria-label="Main">
+      <ul>
+        {{ $current := . -}}
+        {{ range site.Menus.main -}}
+        <li><a href="{{ .URL }}"{{ if or ($current.IsMenuCurrent "main" .) ($current.HasMenuCurrent "main" .) }} aria-current="page"{{ end }}>{{ .Name }}</a></li>
+        {{ end -}}
+      </ul>
+    </nav>
+  </div>
+</header>

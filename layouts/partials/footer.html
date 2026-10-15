@@ -1,0 +1,15 @@
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <div>
+      <p class="footer-name">Anthony (AJ) La Barca</p>
+      <p class="muted">{{ site.Params.role }}<br>{{ site.Params.affiliation }}</p>
+    </div>
+    <div class="footer-right">
+      {{ partial "links.html" (dict "labels" false) }}
+      {{ with site.Params.personal }}<p class="muted small"><a href="{{ . }}">Photography &amp; music</a> live on a separate site.</p>{{ end }}
+    </div>
+  </div>
+  <div class="wrap">
+    <p class="fineprint">Views expressed here are my own and do not represent the University of Colorado Boulder or any other organization I am affiliated with. Photos by me. © {{ now.Year }}</p>
+  </div>
+</footer>

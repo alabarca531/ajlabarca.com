@@ -1,0 +1,62 @@
+{{ define "main" }}
+{{ $cv := hugo.Data.cv }}
+<div class="wrap page cv">
+  <header class="page-header cv-header">
+    <div>
+      <p class="eyebrow">Curriculum Vitae</p>
+      <h1>Anthony (AJ) La Barca</h1>
+      <p class="lede">{{ site.Params.role }}, {{ site.Params.affiliation }}</p>
+    </div>
+    <div class="cv-actions">
+      {{ with site.Params.cvPDF }}{{ if fileExists (printf "static/%s" .) }}
+      <a class="btn btn-primary" href="{{ . | relURL }}">{{ partial "icon.html" "download" }} Download PDF</a>
+      {{ end }}{{ end }}
+      <button class="btn" type="button" onclick="window.print()">Print</button>
+    </div>
+  </header>
+
+
+  <section class="cv-section"><h2>Education</h2>{{ partial "cv-entries.html" $cv.education }}</section>
+  <section class="cv-section"><h2>Research Experience</h2>{{ partial "cv-entries.html" $cv.research }}</section>
+
+  <section class="cv-section">
+    <h2>Publications</h2>
+    <ol class="pubs pubs-compact">{{ range hugo.Data.publications }}{{ partial "pub.html" . }}{{ end }}</ol>
+  </section>
+
+  <section class="cv-section">
+    <h2>Teaching</h2>
+    {{ partial "cv-entries.html" $cv.teaching }}
+    {{ with resources.GetMatch "images/lecturing.*" }}
+    {{ $img := .Resize "1200x webp" }}
+    <figure class="cv-photo"><img src="{{ $img.RelPermalink }}" width="{{ $img.Width }}" height="{{ $img.Height }}" alt="AJ La Barca lecturing" loading="lazy"></figure>
+    {{ end }}
+  </section>
+
+  <section class="cv-section">
+    <h2>Honors &amp; Awards</h2>
+    {{ range $cv.awards }}
+    <div class="cv-entry"><div class="cv-when">{{ .when }}</div><div><p>{{ .what }}</p></div></div>
+    {{ end }}
+  </section>
+
+  <section class="cv-section">
+    <h2>Skills</h2>
+    <dl class="skills">
+      {{ range $cv.skills }}<dt>{{ .area }}</dt><dd>{{ .items }}</dd>{{ end }}
+    </dl>
+  </section>
+
+  <section class="cv-section">
+    <h2>Selected Course Projects</h2>
+    <ul class="plain">{{ range $cv.projects }}<li>{{ . }}</li>{{ end }}</ul>
+  </section>
+
+  <section class="cv-section"><h2>Other Experience</h2>{{ partial "cv-entries.html" $cv.other }}</section>
+
+  <section class="cv-section">
+    <h2>Activities</h2>
+    <ul class="plain">{{ range $cv.activities }}<li>{{ . }}</li>{{ end }}</ul>
+  </section>
+</div>
+{{ end }}

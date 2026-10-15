@@ -1,0 +1,90 @@
+# Structured CV. Rendered at /cv. Publications are pulled from data/publications.yaml.
+
+education:
+  - degree: Ph.D., Aerospace Engineering Sciences
+    school: University of Colorado Boulder
+    when: 2024 – present
+    details:
+      - "Advisor: Prof. Nisar Ahmed, [COHRINT Lab](https://cohrint.info/)"
+      - "Focus: Bayesian estimation, data association, autonomous systems, time series classification"
+  - degree: M.S., Aerospace Engineering Sciences
+    school: University of Colorado Boulder
+    when: 2026
+    details:
+      - "Specialization: Autonomous Systems"
+  - degree: B.S., Physics & Astronomy
+    school: University of Rochester
+    when: 2023
+    details:
+      - "Minors: Computer Science, Mathematics, Music"
+      - Sigma Pi Sigma Physics Honor Society · Dean's List (five semesters)
+
+research:
+  - title: Graduate Research Assistant
+    org: COHRINT Lab, University of Colorado Boulder
+    when: 2025 – present
+    details:
+      - Developing detector–tracker frameworks for the mWidar microwave imaging radar
+      - Time series classification for satellite fault detection, in partnership with Trusted Space, Inc.
+  - title: Undergraduate Researcher
+    org: University of Rochester
+    when: 2021 – 2022
+    details:
+      - Studied non-principal axis rotation in binary asteroid systems and its effect on BYORP, with Prof. Alice Quillen. Published in *Icarus* (2021).
+
+teaching:
+  - title: Teaching Assistant, Orbital Mechanics & Attitude Dynamics
+    org: University of Colorado Boulder
+    when: 2024 – 2025
+    details:
+      - Held office hours, graded assignments, and assisted with course administration
+  - title: Physics Department Teaching Intern
+    org: University of Rochester
+    when: 2022 – 2023
+    details:
+      - Led workshops, held office hours, and graded for General Physics I, Electricity & Magnetism, and Honors Modern Physics
+
+other:
+  - title: Tool Rental Lead
+    org: The Home Depot
+    when: 2024
+    details:
+      - Managed the rental center, developed sales techniques, and trained staff on heavy-lift equipment
+  - title: Assistant Associate Support Department Supervisor
+    org: The Home Depot
+    when: 2023 – 2024
+    details:
+      - Built and reviewed store scheduling, provided logistics support, and planned community outreach events
+
+projects:
+  - Adoption of the Transformer Architecture for Supernova Detection in the DESI Survey (2023)
+  - Effectiveness of Transfer Learning for Medical Computer Vision (2023)
+  - HII and Massive Star Formation Regions, with T. Lovan (2023)
+  - Presence of Dark Matter Halos in Cluster and Field Galaxies (2022)
+
+awards:
+  - what: Citizen of the Month, Nassau County Legislature
+    when: Dec 2023
+  - what: Citation for Extraordinary Service to the Community
+    when: Oct 2023
+  - what: Winner, University of Rochester Symphony Orchestra Concerto Competition
+    when: 2021 – 22
+  - what: USA Ultimate D-III Metro East Champions; 12th at College Nationals
+    when: 2021, 2023
+  - what: Dean's List, University of Rochester
+    when: 2019 – 2022
+
+skills:
+  - area: Programming
+    items: Python (ML, data analysis), MATLAB, Julia, C/C++, Java, LISP, LaTeX, Git, Unix
+  - area: Estimation & ML
+    items: Kalman & particle filtering, data association, Bayesian inference, time series classification, computer vision
+  - area: Observational Astronomy
+    items: MaxIM DL, SAOImage, CCDStack, TCS-Go Galil, TheSky, remote observation
+  - area: Engineering & Lab
+    items: Vectorworks CAD, 3D printing, spectrophotometry, Mastersizer 3000 particle size analysis, XRF analysis
+
+activities:
+  - Society of Physics Students · Astronomy Club · Rock Climbing Club
+  - Rochester Ultimate Frisbee
+  - University of Rochester Symphony Orchestra

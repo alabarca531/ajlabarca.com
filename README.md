@@ -1,53 +1,26 @@
-# Anthony (AJ) La Barca - Hugo Website Template
+# ajlabarca.com
 
-This is a professional academic website template created with Hugo and the Paige theme.
-
-## Structure
-
-- **Home Page** (`content/_index.md`) - Main landing page with welcome message and navigation
-- **Research Interests** (`content/research.md`) - Your research focus and current projects  
-- **Biography** (`content/bio.md`) - Academic background and professional experience
-- **Publications** (`content/publications.md`) - Complete list of scholarly publications
-- **CV** (`content/cv.md`) - Complete curriculum vitae
-
-## Navigation
-
-The site includes a main navigation menu with the following tabs:
-- Home
-- Research  
-- Bio
-- Publications
-- CV
-
-## Customization
-
-To customize this template for your use:
-
-1. **Replace placeholder content** in all content files with your actual information
-2. **Add your CV PDF** to `static/files/cv.pdf`
-3. **Update contact information** in the CV page
-4. **Customize the theme** by modifying `hugo.toml` as needed
-5. **Add profile photo** to `static/images/` if desired
-
-## Running the Site
-
-To preview your site locally:
+Professional site for Anthony (AJ) La Barca. Plain Hugo with no theme; deployed to GitHub Pages by `.github/workflows/hugo.yaml` on push to `main`.
 
 ```bash
-hugo server -D
+hugo server        # preview at http://localhost:1313
+hugo --minify      # build to public/
 ```
 
-To build the site for deployment:
+## Where things live
 
-```bash
-hugo
-```
+| To change…                             | Edit                                  |
+| -------------------------------------- | ------------------------------------- |
+| Email, Scholar, ORCID, GitHub, LinkedIn | `hugo.toml` → `[params]` (empty hides) |
+| Home page bio                          | `content/_index.md`                   |
+| News items                             | `data/news.yaml`                      |
+| Publications (home, /publications, CV) | `data/publications.yaml`              |
+| Research projects (home cards, /research) | `data/projects.yaml`               |
+| CV                                     | `data/cv.yaml`                        |
+| CV PDF download button                 | drop the file at `static/files/Anthony_LaBarca_CV.pdf` |
+| Home page headshot                     | `assets/images/headshot.*` (keep only one) |
+| Lecturing photo on CV (optional)       | `assets/images/lecturing.*`           |
+| Styles                                 | `assets/css/main.css`                 |
+| Hero particle-filter animation         | `assets/js/particle-filter.js`        |
 
-The built site will be in the `public/` directory.
-
-## Notes
-
-- All content files use Markdown format
-- The menu structure is defined in `hugo.toml`
-- Static files (PDFs, images) go in the `static/` directory
-- The Paige theme provides responsive, professional styling
+Images in `assets/images/` are resized and converted to WebP at build time, so full-resolution originals are fine there.

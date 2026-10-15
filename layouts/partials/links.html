@@ -1,0 +1,14 @@
+{{- /* Profile links from site params; empty params are skipped. Pass "labels" true to show text. */ -}}
+{{- $p := site.Params -}}
+{{- $labels := .labels -}}
+{{- $items := slice -}}
+{{- with $p.email }}{{ $items = $items | append (dict "name" "Email" "url" (printf "mailto:%s" .) "icon" "mail") }}{{ end -}}
+{{- with $p.scholar }}{{ $items = $items | append (dict "name" "Google Scholar" "url" . "icon" "scholar") }}{{ end -}}
+{{- with $p.orcid }}{{ $items = $items | append (dict "name" "ORCID" "url" (printf "https://orcid.org/%s" .) "icon" "orcid") }}{{ end -}}
+{{- with $p.github }}{{ $items = $items | append (dict "name" "GitHub" "url" . "icon" "github") }}{{ end -}}
+{{- with $p.linkedin }}{{ $items = $items | append (dict "name" "LinkedIn" "url" . "icon" "linkedin") }}{{ end -}}
+<ul class="links{{ if $labels }} links-labeled{{ end }}">
+  {{- range $items }}
+  <li><a href="{{ .url }}"{{ if not (hasPrefix .url "mailto:") }} rel="me noopener" target="_blank"{{ end }} title="{{ .name }}">{{ partial "icon.html" .icon }}<span{{ if not $labels }} class="sr-only"{{ end }}>{{ .name }}</span></a></li>
+  {{- end }}
+</ul>

@@ -1,16 +1,6 @@
 {{ define "main" }}
-{{ partial "banner.html" . }}
-
-<!-- Main Content Section -->
-<div class="container-fluid">
-    <div class="justify-content-center row">
-        <div class="col col-auto col-lg-10 col-md-11 col-xl-9 col-xxl-8">
-            <article>
-                <div class="paige-content">
-                    {{ .Content }}
-                </div>
-            </article>
-        </div>
-    </div>
+<div class="wrap page">
+  {{ partial "page-header.html" . }}
+  <div class="prose">{{ .Content }}</div>
 </div>
 {{ end }}

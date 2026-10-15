@@ -1,52 +1,48 @@
-# Hugo configuration file for Anthony (AJ) La Barca's professional website
 baseURL = 'https://ajlabarca.com/'
-languageCode = 'en-us'
+locale = 'en-US'
 title = 'Anthony (AJ) La Barca'
+enableRobotsTXT = true
+disableKinds = ['taxonomy', 'term']
 
-theme = 'paige'
-
-# Suppress raw HTML warning
-ignoreLogs = ['warning-goldmark-raw-html']
-
-# Table of Contents configuration
-[markup]
-  [markup.tableOfContents]
-    startLevel = 2
-    endLevel = 4
-    ordered = false
-  [markup.goldmark.renderer]
-    unsafe = true
-
-[menu]
-  [[menu.main]]
-    name = "Home"
-    url = "/"
-    weight = 1
-  [[menu.main]]
-    name = "Research"
-    url = "/research/"
-    weight = 10
-  [[menu.main]]
-    name = "Publications"
-    url = "/publications/"
-    weight = 30
-  [[menu.main]]
-    name = "CV"
-    url = "/cv/"
-    weight = 40
-    [[menu.main]]
-    name = "About"
-    url = "/about/"
-    weight = 50
+[markup.goldmark.renderer]
+  unsafe = true
 
 [params]
-  # Paige theme parameters
-  [params.paige]
-    # Disable automatic page listings
-    hide_pages = true
-    hide_collections = true
+  description = 'PhD student in Aerospace Engineering at CU Boulder researching Bayesian estimation, multi-target tracking, and fault detection for autonomous systems.'
+  role = 'PhD Student, Aerospace Engineering Sciences'
+  affiliation = 'University of Colorado Boulder'
+  lab = 'COHRINT Lab'
+  labURL = 'https://cohrint.info/'
+  location = 'Boulder, Colorado'
 
-# Image processing cache
-[caches]
-  [caches.images]
-    dir = ':cacheDir/images'
+  # Profile links. Leave a value empty ('') to hide it everywhere on the site.
+  email = 'aj.labarca@colorado.edu'
+  scholar = 'https://scholar.google.com/citations?user=In_r4EwAAAAJ'
+  orcid = '0000-0001-7229-6769'
+  github = 'https://github.com/alabarca531'
+  linkedin = 'https://www.linkedin.com/in/anthony-la-barca-63b766177'
+  personal = 'https://personal.ajlabarca.com'
+
+  # Drop a PDF at static/files/ with this name and a "Download PDF" button appears on the CV page.
+  cvPDF = 'files/Anthony_LaBarca_CV.pdf'
+
+[menus]
+  [[menus.main]]
+    name = 'Research'
+    pageRef = '/research'
+    weight = 10
+  [[menus.main]]
+    name = 'Publications'
+    pageRef = '/publications'
+    weight = 20
+  [[menus.main]]
+    name = 'CV'
+    pageRef = '/cv'
+    weight = 30
+
+[imaging]
+  resampleFilter = 'Lanczos'
+  [imaging.jpeg]
+    quality = 82
+  [imaging.webp]
+    quality = 80

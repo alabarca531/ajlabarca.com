@@ -1,25 +1,82 @@
 {{ define "main" }}
-{{ partial "banner.html" . }}
-
-<!-- Main Content Section -->
-<div class="container-fluid">
-    <div class="justify-content-center row">
-        <div class="col col-auto col-lg-10 col-md-11 col-xl-9 col-xxl-8">
-            <article>
-                <div class="row">
-                    <!-- Headshot image - shows first on mobile, second on desktop -->
-                    <div class="col-md-4 d-flex align-items-start justify-content-center order-first order-md-last mb-4 mb-md-0">
-                        <img src="/files/Headshot.jpeg" alt="Anthony (AJ) La Barca" class="img-fluid rounded shadow-sm" style="max-width: 300px;">
-                    </div>
-                    <!-- Bio content - shows second on mobile, first on desktop -->
-                    <div class="col-md-8 order-last order-md-first">
-                        <div class="paige-content">
-                            {{ .Content }}
-                        </div>
-                    </div>
-                </div>
-            </article>
-        </div>
+<section class="hero">
+  <canvas class="pf-canvas" aria-hidden="true"></canvas>
+  <div class="wrap hero-grid">
+    <div class="hero-text">
+      <p class="eyebrow">{{ site.Params.role }} · {{ site.Params.affiliation }}</p>
+      <h1>Anthony <span class="nick">(AJ)</span> La&nbsp;Barca</h1>
+      <p class="tagline">Bayesian estimation, multi-target tracking, and fault detection for autonomous aerospace systems.</p>
+      {{ partial "links.html" (dict "labels" true) }}
     </div>
-</div>
+    <figure class="hero-photo">
+      {{ with resources.GetMatch "images/headshot.*" -}}
+      {{ $s := .Fill "480x600 Center webp" }}{{ $l := .Fill "800x1000 Center webp" -}}
+      <img src="{{ $s.RelPermalink }}" srcset="{{ $s.RelPermalink }} 480w, {{ $l.RelPermalink }} 800w" sizes="(max-width: 760px) 60vw, 320px" width="480" height="600" alt="Portrait of AJ La Barca" fetchpriority="high">
+      {{- end }}
+    </figure>
+  </div>
+  <div class="wrap pf-caption-row">
+    <button class="pf-caption" type="button" aria-pressed="false" hidden>
+      <span class="pf-dot" aria-hidden="true"></span>
+      <span class="pf-label">Live: a particle filter tracking a target through noisy measurements</span>
+    </button>
+  </div>
+</section>
+
+<section class="wrap section about">
+  <h2 class="section-label">About</h2>
+  <div class="prose">{{ .Content }}</div>
+</section>
+
+<section class="wrap section">
+  <div class="section-head">
+    <h2 class="section-label">Current research</h2>
+    <a class="more" href="{{ "research/" | relURL }}">All research {{ partial "icon.html" "arrow" }}</a>
+  </div>
+  <div class="cards">
+    {{ range hugo.Data.projects }}
+    <a class="card" href="{{ "research/" | relURL }}#{{ .id }}">
+      <h3>{{ .title }}</h3>
+      <p>{{ .summary }}</p>
+      <ul class="tags">{{ range .tags }}<li>{{ . }}</li>{{ end }}</ul>
+    </a>
+    {{ end }}
+  </div>
+</section>
+
+<section class="wrap section two-col">
+  <div>
+    <h2 class="section-label">News</h2>
+    <ul class="news">
+      {{ range first 5 hugo.Data.news }}
+      <li><span class="news-date">{{ .when }}</span><span>{{ .text | markdownify }}</span></li>
+      {{ end }}
+    </ul>
+  </div>
+  <div>
+    <div class="section-head">
+      <h2 class="section-label">Selected publications</h2>
+      <a class="more" href="{{ "publications/" | relURL }}">All {{ partial "icon.html" "arrow" }}</a>
+    </div>
+    <ol class="pubs pubs-compact">
+      {{ range where hugo.Data.publications "selected" true }}{{ partial "pub.html" . }}{{ end }}
+    </ol>
+  </div>
+</section>
+
+{{ with site.Params.personal }}
+{{ with resources.Get "images/banner.jpeg" }}
+{{ $sm := .Resize "900x webp" }}{{ $md := .Resize "1600x webp" }}{{ $lg := .Resize "2400x webp" }}
+<section class="photo-band">
+  <img src="{{ $md.RelPermalink }}" srcset="{{ $sm.RelPermalink }} 900w, {{ $md.RelPermalink }} 1600w, {{ $lg.RelPermalink }} 2400w" sizes="100vw" alt="Snow-streaked peaks above a dense pine forest and a lake under storm clouds" loading="lazy" width="{{ $md.Width }}" height="{{ $md.Height }}">
+  <div class="photo-band-text wrap">
+    <p>When I'm not tuning filters, I'm usually behind a camera, out in the mountains, or making music.</p>
+    <a class="btn btn-light" href="{{ $.Site.Params.personal }}">{{ partial "icon.html" "camera" }} Photography &amp; music</a>
+  </div>
+</section>
+{{ end }}
+{{ end }}
+
+{{ $js := resources.Get "js/particle-filter.js" | js.Build (dict "minify" true) | fingerprint }}
+<script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" defer></script>
 {{ end }}

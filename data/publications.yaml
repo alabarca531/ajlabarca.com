@@ -1,0 +1,78 @@
+# Single source of truth for publications. Used by the home page, /publications, and /cv.
+#
+# Fields:
+#   type:     journal | conference | preprint | thesis
+#   authors:  list, exactly as they should print. Your name is bolded automatically.
+#   status:   optional, e.g. "Accepted", "In review", "In press". Remove once published.
+#   selected: true to feature on the home page
+#   project:  optional id from data/projects.yaml; lists the paper under that project on /research
+#   links:    any of doi (ID only), url, pdf, arxiv (ID only), code, slides
+#   bibtex:   optional, shown in an expandable "BibTeX" block
+
+- id: labarca2026mwidar
+  type: conference
+  project: mwidar
+  title: Robust Dynamic Object Detection Algorithms for Continuous-Capture mWidar Imaging
+  authors: [A. J. La Barca, B. Jourabchi, N. R. Ahmed, F. Da Silva]
+  venue: AIAA SciTech Forum
+  location: Orlando, FL
+  year: 2026
+  month: Jan
+  selected: true
+  links:
+    doi: 10.2514/6.2026-1386
+  bibtex: |
+    @inproceedings{LaBarca2026mWidar,
+      author    = {La Barca, A. J. and Jourabchi, B. and Ahmed, N. R. and Da Silva, F.},
+      title     = {Robust Dynamic Object Detection Algorithms for Continuous-Capture mWidar Imaging},
+      booktitle = {AIAA SciTech Forum},
+      address   = {Orlando, FL},
+      year      = {2026},
+      month     = jan,
+      doi       = {10.2514/6.2026-1386}
+    }
+
+- id: labarca2026satellite
+  type: conference
+  project: fault-detection
+  title: Time Series Classification for Satellite Fault Detection
+  authors: [A. J. La Barca, J. Waltz, N. R. Ahmed, A. Kim, I. Hussein, M. Dean, M. Simon]
+  venue: AIAA SciTech Forum
+  location: Orlando, FL
+  year: 2026
+  month: Jan
+  selected: true
+  links:
+    doi: 10.2514/6.2026-2897
+  bibtex: |
+    @inproceedings{LaBarca2026Satellite,
+      author    = {La Barca, A. J. and Waltz, J. and Ahmed, N. R. and Kim, A. and Hussein, I. and Dean, M. and Simon, M.},
+      title     = {Time Series Classification for Satellite Fault Detection},
+      booktitle = {AIAA SciTech Forum},
+      address   = {Orlando, FL},
+      year      = {2026},
+      month     = jan,
+      doi       = {10.2514/6.2026-2897}
+    }
+
+- id: quillen2021byorp
+  type: journal
+  title: Non-principal axis rotation in binary asteroid systems and how it weakens the BYORP effect
+  authors: [A. C. Quillen, A. J. La Barca, Y. Y. Chen]
+  venue: Icarus
+  volume: "368"
+  pages: "114826"
+  year: 2021
+  selected: true
+  links:
+    doi: 10.1016/j.icarus.2021.114826
+  bibtex: |
+    @article{Quillen2021BYORP,
+      author  = {Quillen, A. C. and La Barca, A. J. and Chen, Y. Y.},
+      title   = {Non-principal axis rotation in binary asteroid systems and how it weakens the {BYORP} effect},
+      journal = {Icarus},
+      volume  = {368},
+      pages   = {114826},
+      year    = {2021},
+      doi     = {10.1016/j.icarus.2021.114826}
+    }

@@ -1,0 +1,24 @@
+{{ define "main" }}
+<div class="wrap page">
+  {{ partial "page-header.html" . }}
+  {{ $p := site.Params }}
+  {{ if or $p.scholar $p.orcid }}
+  <p class="profile-row">
+    {{ with $p.scholar }}<a class="btn" href="{{ . }}" rel="noopener" target="_blank">{{ partial "icon.html" "scholar" }} Google Scholar</a>{{ end }}
+    {{ with $p.orcid }}<a class="btn" href="https://orcid.org/{{ . }}" rel="noopener" target="_blank">{{ partial "icon.html" "orcid" }} ORCID</a>{{ end }}
+  </p>
+  {{ end }}
+  {{ .Content }}
+  {{ $byYear := slice }}
+  {{ range hugo.Data.publications }}{{ $byYear = $byYear | append (string .year) }}{{ end }}
+  {{ range (sort ($byYear | uniq) "value" "desc") }}
+  {{ $y := . }}
+  <section class="year-group">
+    <h2 class="year">{{ $y }}</h2>
+    <ol class="pubs">
+      {{ range hugo.Data.publications }}{{ if eq (string .year) $y }}{{ partial "pub.html" . }}{{ end }}{{ end }}
+    </ol>
+  </section>
+  {{ end }}
+</div>
+{{ end }}

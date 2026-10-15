@@ -1,0 +1,28 @@
+{{ define "main" }}
+<div class="wrap page">
+  {{ partial "page-header.html" . }}
+  <div class="research-layout">
+    <aside class="toc" aria-label="Projects">
+      <p class="section-label">Projects</p>
+      <ol>{{ range hugo.Data.projects }}<li><a href="#{{ .id }}">{{ .short | default .title }}</a></li>{{ end }}</ol>
+    </aside>
+    <div>
+      {{ with .Content }}<div class="prose interests">{{ . }}</div>{{ end }}
+      {{ range $i, $p := hugo.Data.projects }}
+      <article class="project" id="{{ $p.id }}">
+        <p class="project-num">{{ printf "%02d" (add $i 1) }}</p>
+        <h2>{{ $p.title }}</h2>
+        {{ with $p.partner }}<p class="muted">In partnership with {{ . }}</p>{{ end }}
+        <ul class="tags">{{ range $p.tags }}<li>{{ . }}</li>{{ end }}</ul>
+        <div class="prose">{{ $p.body | markdownify }}</div>
+        {{ $related := where hugo.Data.publications "project" $p.id }}
+        {{ with $related }}
+        <h3 class="section-label">Related publications</h3>
+        <ol class="pubs pubs-compact">{{ range . }}{{ partial "pub.html" . }}{{ end }}</ol>
+        {{ end }}
+      </article>
+      {{ end }}
+    </div>
+  </div>
+</div>
+{{ end }}

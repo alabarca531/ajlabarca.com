@@ -1,0 +1,10 @@
+{{ range . }}
+<div class="cv-entry">
+  <div class="cv-when">{{ .when }}</div>
+  <div>
+    <p class="cv-title">{{ .title | default .degree }}</p>
+    <p class="cv-org">{{ .org | default .school }}</p>
+    {{ with .details }}<ul>{{ range . }}<li>{{ . | markdownify }}</li>{{ end }}</ul>{{ end }}
+  </div>
+</div>
+{{ end }}
